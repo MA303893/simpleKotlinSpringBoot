@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class TopicService {
-    private val topics: List<Topic> = listOf(
+    private val topics: MutableList<Topic> = mutableListOf(
             Topic("kotlin", "Kotlin Lang", "Kotlin is great"),
             Topic("ruby", "Ruby", "Ruby is awesome!!!"),
             Topic("java", "Java", "hahahahaha, ;)")
@@ -13,5 +13,16 @@ class TopicService {
 
     fun getAllTopics() = topics
 
-    fun getTopic(id: String) =  topics.filter { t -> t.id.equals(id) }.first()
+    fun getTopic(id: String) = topics.filter { t -> t.id.equals(id) }.first()
+
+    fun deleteTopic(id: String): Topic {
+        val topic = getTopic(id)
+        topics.remove(topic)
+        return topic
+    }
+
+    fun addTopic(topic: Topic): Topic {
+        topics.add(topic)
+        return topic
+    }
 }
