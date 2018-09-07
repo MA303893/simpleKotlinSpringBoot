@@ -11,7 +11,6 @@ class TopicsController(@Autowired val topicService: TopicService) {
     @GetMapping("/topics")
     fun getTopics() = topicService.getAllTopics()
 
-
     @GetMapping("/topics/{id}")
     fun getTopic(@PathVariable id: String) = topicService.getTopic(id)
 
@@ -19,7 +18,6 @@ class TopicsController(@Autowired val topicService: TopicService) {
     fun deleteTopic(@PathVariable id: String) = topicService.deleteTopic(id)
 
     @RequestMapping(method = [RequestMethod.POST], value = "/topics")
-    fun addTopic(@RequestBody topic: Topic): Topic {
-        return topicService.addTopic(topic)
-    }
+    fun addTopic(@RequestBody topic: Topic) = topicService.addTopic(topic)
+
 }
