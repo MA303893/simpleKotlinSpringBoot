@@ -20,4 +20,7 @@ class TopicsController(@Autowired val topicService: TopicService) {
     @RequestMapping(method = [RequestMethod.POST], value = "/topics")
     fun addTopic(@RequestBody topic: Topic) = topicService.addTopic(topic)
 
+    @PutMapping("/topics/{id}")
+    fun updateTopic(@RequestBody topic: Topic, @PathVariable id: String) = topicService.updateTopic(id, topic)
+
 }

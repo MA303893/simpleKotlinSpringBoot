@@ -25,4 +25,14 @@ class TopicService {
         topics.add(topic)
         return topic
     }
+
+    fun updateTopic(id: String, topic: Topic): Topic {
+        val res = topics.forEachIndexed { index, t ->
+            if (t.id.equals(id)) {
+                topics.set(index, topic)
+                return topics.get(index)
+            }
+        }
+        throw Exception("Topic not found")
+    }
 }
