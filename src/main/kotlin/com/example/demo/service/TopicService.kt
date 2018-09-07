@@ -13,5 +13,5 @@ class TopicService {
 
     fun getAllTopics() = topics
 
-    fun getTopic(id: String) = topics.stream().filter { topic -> topic.id.equals(id) }.findFirst().get()
+    fun getTopic(id: String) =  topics.filter { t -> t.id.equals(id) }.first()
 }
